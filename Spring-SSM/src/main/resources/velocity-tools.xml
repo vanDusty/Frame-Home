@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tools>
+<toolbox scope="application">
+    <!--<tool key="pageUtil" class="com.xwcloud.common.utils.PageUtil" />-->
+    <!--<tool key="paginator" class="com.xwcloud.common.utils.Paginator"/>-->
+    <!--<tool key="mathTool" class="org.apache.velocity.tools.generic.MathTool"/>-->
+    <!--<tool key="stringUtil" class="com.xwcloud.common.utils.StringUtils"/>-->
+    <!--<tool key="dateUtils" class="com.xwcloud.common.utils.DateUtils"/>-->
+    <!--<tool key="vmUtils" class="com.xwcloud.common.utils.VmUtils"/>-->
+    <!--<tool key="xwUtils" class="com.xwcloud.common.utils.XwUtils"/>-->
+    <!--<tool key="stringFmtUtils" class="com.xwcloud.web.controller.commodity.utils.StringFmtUtils"/>-->
+</toolbox>
+</tools>

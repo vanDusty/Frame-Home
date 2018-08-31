@@ -1,0 +1,158 @@
+#** -------------------------------------------
+ * 分页
+ * $paginator com.alibaba.citrus.util.Paginator
+ * $builder e.g
+ * #set($pager = $pageUtil.pager(1, 20, 200))
+ * #set($builder = $crmMod.setTarget('customer/recordInfo.vm').addQueryData('customer_id', $customerId).fork())
+ * #showPage($pager $builder)
+ * -------------------------------------------- *#
+#macro(showPage $paginator $builder)
+
+    #if ($paginator.getPages() > 1)
+
+        #set ($_page_min_tmp = $paginator.getPage() - 3)
+        #set ($_page_max_tmp = $paginator.getPage() + 3)
+
+        #set ($_page_min = $mathTool.max(1, $_page_min_tmp))
+        #set ($_page_max = $mathTool.min($paginator.getPages(), $_page_max_tmp))
+
+    <!--page start-->
+    <div class="btn-group">
+        #if ($paginator.getPage() > $_page_min)
+            <a class="btn btn-white" href="$builder&page=$paginator.getPreviousPage()" target="_self" style="height: 100%">
+                <i class="fa fa-chevron-left" style="width:100%;height:100%"></i>
+            </a>
+            #if ($_page_min > 1)
+                <a class="btn btn-white" href="$builder&page=1" target="_self">1...
+                </a>
+            #end
+
+            #foreach ( $_page_i in [$_page_min..$paginator.getPreviousPage()] )
+                <a class="btn btn-white" href="$builder&page=$_page_i" target="_self">
+                    ${_page_i}
+                </a>
+            #end
+        #end
+
+        <button type="button" class="btn btn-white active">
+            $paginator.getPage()
+        </button>
+
+        #if ($paginator.getPage() < $_page_max)
+            #if($paginator.getNextPage() <= $_page_max)
+                #foreach ($_page_i in [$paginator.getNextPage()..$_page_max])
+                    <a class="btn btn-white" href="$builder&page=$_page_i" target="_self">
+                        ${_page_i}
+                    </a>
+                #end
+            #end
+
+            #if ($_page_max < $paginator.getPages())
+                <a class="btn btn-white" href="$builder&page=$paginator.getPages()" target="_self">
+                    ...$paginator.getPages()
+                </a>
+            #end
+
+            #if($paginator.getNextPage() <= $_page_max)
+                <a class="btn btn-white" href="$builder&page=$paginator.getNextPage()" target="_self">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            #end
+        #end
+    </div>
+    #end
+#end
+
+#macro(showMenus $menus)
+    #foreach($subMenu in $!menus)
+        #if ($!subMenu.isLink)
+        <li>
+            <a class="" href="$!subMenu.url"
+               title="$!subMenu.linkTitle">
+                #if($!subMenu.status==2)
+                    <span class="red-bg">$!subMenu.name</span>
+                #else
+                    $!subMenu.name
+                #end
+            </a>
+        </li>
+        #else
+        <li class="trigger">
+            <a href="#">
+                #if($!subMenu.status==2)
+                    <span class="red-bg">$!subMenu.name</span>
+                #else
+                    <span class="">$!subMenu.name</span>
+                #end
+                <i class="fa fa-angle-down"></i></a>
+            <div class="sub-nav">
+                <ul>
+                    #showMenus($!subMenu.subMenus)
+                </ul>
+            </div>
+        </li>
+        #end
+    #end
+#end
+
+#macro(showRequestSubFields $subFields $num)
+<div class="list list$num">
+    #set($textIndent=$mathTool.mul($mathTool.sub($num,1),30)+5)
+    #set($num=$num+1)
+    #foreach($subField in $!subFields)
+        #if($subField.subFields != "[]")
+            <ul class="tr  tableTrigger">
+                <li class="td-1" style="width: 21.6%; text-indent: $stringUtil.add($textIndent,"px");">
+                    <i class="fa fa-plus-square-o"></i> $!subField.fieldName
+                </li>
+                <li class="td-2" style="width: 15.2%;">$!subField.fieldType</li>
+                <li class="td-3" style="width: 10.1%; color: red;">$!subField.isRequired</li>
+                <li class="td-4" style="width: 12.1%;">$!subField.demoValue</li>
+                <li class="td-5" style="width: 15.2%;">$!subField.limitedDesc</li>
+                <li class="td-6" style="width: 25%;">$!subField.desc</li>
+            </ul>
+            #showRequestSubFields($!subField.subFields,$num)
+        #else
+            <ul class="tr">
+                <li class="td-1" style="width: 21.6%; text-indent: $stringUtil.add($textIndent,"px");">
+                    └ $!subField.fieldName
+                </li>
+                <li class="td-2" style="width: 15.2%;">$!subField.fieldType</li>
+                <li class="td-3" style="width: 10.1%; color: red;">$!subField.isRequired</li>
+                <li class="td-4" style="width: 12.1%;">$!subField.demoValue</li>
+                <li class="td-5" style="width: 15.2%;">  $!subField.limitedDesc</li>
+                <li class="td-6" style="width: 25%;">$!subField.desc</li>
+            </ul>
+        #end
+    #end
+</div>
+#end
+
+#macro(showResponseSubFields $SubFields $num)
+<div class="list list$num">
+    #set($textIndent=$mathTool.mul($mathTool.sub($num,1),30)+5)
+    #set($num=$num+1)
+    #foreach($subField in $!subFields)
+        #if($subField.subFields != "[]")
+            <ul class="tr  tableTrigger">
+                <li class="td-1" style="width: 25%; text-indent: $stringUtil.add($textIndent,"px");">
+                    <i class="fa fa-plus-square-o"></i> $!subField.fieldName
+                </li>
+                <li class="td-2" style="width: 29.9%;">$!subField.fieldType</li>
+                <li class="td-4" style="width: 14.2%;">$!subField.demoValue</li>
+                <li class="td-6" style="width: 22%;">$!subField.desc</li>
+            </ul>
+            #showResponseSubFields($!subField.subFields,$num)
+        #else
+            <ul class="tr">
+                <li class="td-1" style="width: 25%; text-indent: $stringUtil.add($textIndent,"px");">
+                    └ $!subField.fieldName
+                </li>
+                <li class="td-2" style="width: 29.9%;">$!subField.fieldType</li>
+                <li class="td-4" style="width: 14.2%;">$!subField.demoValue</li>
+                <li class="td-6" style="width: 22%;">$!subField.desc</li>
+            </ul>
+        #end
+    #end
+</div>
+#end
