@@ -2,13 +2,13 @@
 
 <tools>
 <toolbox scope="application">
-    <!--<tool key="pageUtil" class="com.xwcloud.common.utils.PageUtil" />-->
-    <!--<tool key="paginator" class="com.xwcloud.common.utils.Paginator"/>-->
-    <!--<tool key="mathTool" class="org.apache.velocity.tools.generic.MathTool"/>-->
-    <!--<tool key="stringUtil" class="com.xwcloud.common.utils.StringUtils"/>-->
-    <!--<tool key="dateUtils" class="com.xwcloud.common.utils.DateUtils"/>-->
-    <!--<tool key="vmUtils" class="com.xwcloud.common.utils.VmUtils"/>-->
-    <!--<tool key="xwUtils" class="com.xwcloud.common.utils.XwUtils"/>-->
-    <!--<tool key="stringFmtUtils" class="com.xwcloud.web.controller.commodity.utils.StringFmtUtils"/>-->
+    <tool key="pageUtil" class="com.van.dusty.velocity.PageUtil" />
+    <tool key="paginator" class="com.van.dusty.velocity.Paginator"/>
+    <tool key="mathTool" class="org.apache.velocity.tools.generic.MathTool"/>
+    <tool key="stringUtil" class="com.van.dusty.velocity.StringUtils"/>
+    <tool key="dateUtils" class="com.van.dusty.velocity.DateUtils"/>
+    <tool key="vmUtils" class="com.van.dusty.velocity.VmUtils"/>
+    <tool key="xwUtils" class="com.van.dusty.velocity.XwUtils"/>
+    <tool key="stringFmtUtils" class="com.van.dusty.velocity.StringFmtUtils"/>
 </toolbox>
 </tools>
