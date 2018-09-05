@@ -21,16 +21,6 @@ public class ApiResult implements Serializable {
     public ApiResult() {
     }
 
-    public ApiResult(Object data) {
-        this.data = data;
-    }
-
-    public ApiResult(int code, String error) {
-        this.error = error;
-        this.code = code;
-        this.isSuccess = false;
-    }
-
     public int getCode() {
         return this.code;
     }
@@ -62,12 +52,6 @@ public class ApiResult implements Serializable {
     public void setError(String error) {
         this.isSuccess = false;
         this.error = error;
-    }
-
-    public void setError(BaseResultCode result) {
-        this.isSuccess = false;
-        this.code = result.getCode();
-        this.error = result.getMessage();
     }
 
     public void setError(int code, String errorMsg) {
