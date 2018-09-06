@@ -1,6 +1,31 @@
+<!DOCTYPE html>
 <html>
 <body style="text-align: center">
 <h2 >Nice to Meet YOU!</h2>
-<h1>Velocity</h1>
+<h1 id="1">Velocity</h1>
+<input type="button" id="btn">
+<script src="/resources/jquery-2.1.1.min.js">
+    $("#btn").on('click',function () {
+        alert(11);
+        f();
+    }
+    function f() {
+        alert("hello");
+        $.ajax({
+            url: "/test"
+            data: {},
+            method: 'GET',
+            success: function (res) {
+                if(res.code=="200"){
+                    alert("SUCCESS")
+                }
+                else {
+                    alert("签名错误，请重新进入页面");
+                }
+            }
+        });
+
+    })
+</script>
 </body>
 </html>

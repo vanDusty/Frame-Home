@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SpringBoot示例 - 登录</title>
+##    <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
+    <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/resources/css/style.min.css" />
+</head>
+
+<body class="gray-bg">
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name" style="margin-left: -12%;">Dusty</h1>
+        </div>
+        <p>创建一个新账户</p>
+        <form id="registerForm" class="m-t" role="form" onsubmit="" method="post" action="./doRegister">
+            <div class="form-group">
+                <input type="text" name="userName" class="form-control input-lg" placeholder="请输入用户名" required="">
+            </div>
+            <div class="form-group"> ##手机格式校验
+                <input id="mobile" type="phone"  oninvalid="setCustomValidity('请输入正确格式的手机号码！');" name="phone" class="form-control input-lg" placeholder="请输入手机号码" required="">
+            </div>
+            <div class="form-group">
+                <input id="verifyCodeBtn" type="button" class="btn btn-info form-control input-lg"  value="发送手机验证码">
+            </div>
+            <div class="form-group">
+                <input id="verifyCode" type="text"   name="verifyCode" class="form-control input-lg" placeholder="请输入短信验证码" required="">
+            </div>
+            <div class="form-group">
+                <input id="password" type="password" name="password" class="form-control input-lg" placeholder="请输入密码" required="">
+            </div>
+##            <div class="form-group">
+##                <input id="passwordConfig" type="password" class="form-control input-lg" placeholder="请再次输入密码" required="">
+##            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b input-lg">注 册</button>
+            <p class="text-muted text-center"><small>已经有账户了？</small><a href="./login">点此登录</a></p>
+
+        </form>
+    </div>
+</div>
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/js/Jquery-form.js"></script>
+<script>
+    $(function(){
+        /** 验证是否注册成功  */
+        $("#registerForm").ajaxForm(function(data){
+            if(data.code=="200"){
+                alert("注册成功！");
+                window.location.replace("/login") ;
+            }else {
+                alert("注册失败 :" + data.error );
+            }
+        });
+    });
+    // 发送验证码
+    $("#verifyCodeBtn").on('click',function () {
+        var isSend = true;
+        var mobile = $("#mobile").val();
+        //手机号格式验证正则表达式
+        var mobileReg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(17[0-9]{1})|(18[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+        if (mobile == false) {
+            alert("请输入手机号");
+            isSend = false;
+        }else if (!mobileReg.test(mobile)) {
+            alert("请输入正确的手机号");
+            isSend = false;
+        }
+        if (isSend) {
+            $.ajax({
+                url: "./sendVerifyCode",
+                type: "POST",
+                dataType:"json",
+                data:{ phone:$('#mobile').val(),osType:"web",type:"register"},
+                success: function(data) {
+                    if (data.code!='200') {
+                        alert(data.error);
+                    }else {
+                        alert("短信验证码为："+data.data);
+                    }
+                }
+            })
+        }
+    })
+
+
+
+</script>
+</body>
+</html>

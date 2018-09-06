@@ -64,4 +64,12 @@
         <property name="toolboxConfigLocation" value="/WEB-INF/classes/velocity-tools.xml"/> <!--velocity 工具-->
         <property name="viewClass" value="com.van.dusty.velocity.VelocityToolbox20View"/>
     </bean>
+    <!-- 用于返回json格式 -->
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/x-www-form-urlencoded;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
 </beans>

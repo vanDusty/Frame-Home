@@ -34,8 +34,6 @@
         <spring.version>4.3.5.RELEASE</spring.version>
         <!-- mybatis版本号 -->
         <mybatis.version>3.4.1</mybatis.version>
-        <!-- jackson versions -->
-        <jackson.version>1.9.13</jackson.version>
     </properties>
     <dependencies>
         <!-- java ee -->
@@ -154,22 +152,32 @@
 
         <!-- jackson start -->
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.1.36</version>
+            <version>1.2.35</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.7.0</version>
         </dependency>
         <!-- jackson end -->
-
+        <dependency>
+            <groupId>com.xwcloud</groupId>
+            <artifactId>redis-client</artifactId>
+            <version>1.0.12</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-asm</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 
