@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$!curCategory.name</title>
+##    <link href="$baseLink/admin/media/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/image/favicon.ico" rel="shortcut icon">
+##    <link href="$baseLink/admin/media/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/font-awesome.min.css?v=4.3.0" rel="stylesheet">
+####    <link href="$baseLink/admin/media/css/animate.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/style.min.css?v=3.2.0" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/plugins/iCheck/custom.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/common.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/default.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/ecalendar/reset.css" rel="stylesheet">
+##    <link href="$baseLink/admin/media/css/ecalendar/style.css" rel="stylesheet">
+
+
+</head>
+<body class="gray-bg">
+    $screen_content
+</body>
+</html>
+##<script src="$baseLink/admin/media/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script>
+//    jQuery(document).ready(function ($) {
+//        $(".wrapper").slimScroll({
+//            height: "100%",
+//            alwaysVisible: true,
+//        });
+//    });
+</script>
+
