@@ -14,8 +14,8 @@
 		<constructor-arg name="database" value="4"/>
 	</bean>
 
-   	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-	 	<!-- 最大连接数, 默认8个 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!-- 最大连接数, 默认8个 -->
 		<property name="maxTotal" value="${redis.config.maxTotal}" />
 		<!--  最小空闲连接数, 默认0 -->
 		<property name="minIdle" value="${redis.config.minIdle}" />
@@ -32,7 +32,22 @@
 	</bean>
 
 
-	<bean id="stringCache" class="com.xwcloud.redis.utils.StringCache">
+	<bean id="stringCache" class="com.van.dusty.redis.StringCache">
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	<bean id="listCache" class="com.van.dusty.redis.ListCache">
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	<bean id="hashCache" class="com.van.dusty.redis.HashCache">
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	<bean id="setCache" class="com.van.dusty.redis.SetCache">
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	<bean id="redisClient" class="com.van.dusty.redis.RedisClient">
+		<property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	<bean id="redisLock" class="com.van.dusty.redis.RedisDistributedLock">
 		<property name="jedisPool" ref="jedisPool"/>
 	</bean>
 

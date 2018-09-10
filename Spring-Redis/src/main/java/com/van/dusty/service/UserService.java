@@ -8,7 +8,7 @@ public interface UserService {
 
     ApiResult sendSmsVerifyCode(SendSmsCodeVO sendSmsCodeVO);
 
-    ApiResult checkSmsVerifyCode(String phone,String verifyCode);
+    ApiResult userRegister(UserDO userDO);
 
     ApiResult userLogin(UserDO userDO);
 

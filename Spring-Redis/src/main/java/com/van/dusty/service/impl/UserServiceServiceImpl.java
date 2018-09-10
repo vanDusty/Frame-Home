@@ -1,5 +1,6 @@
 package com.van.dusty.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.van.dusty.common.enums.ResultCode;
 import com.van.dusty.common.result.ApiResult;
 import com.van.dusty.common.result.ResultUtils;
@@ -131,16 +132,16 @@ public class UserServiceServiceImpl implements UserService {
         return projectNameEnum;
     }
     // 校验项目名称
-    public ApiResult checkSmsVerifyCode(String phone, String verifyCode) {
-        logger.info("checkSmsVerifyCode param ：" + phone + "," + verifyCode);
-        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(verifyCode)) {
-            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
-        }
-        //获取缓存的验证码
-        String identifyingCodeCache = stringCache.get(MemberConstants.VERIFY_CODE_FOR_BY_PHONE);
-        if (identifyingCodeCache.equals(verifyCode)) {
-            return ResultUtils.setOk();
-        }
+    public ApiResult userRegister(UserDO userDO) {
+        logger.info("checkSmsVerifyCode param ：" + JSON.toJSONString(userDO));
+//        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(verifyCode)) {
+//            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
+//        }
+//        //获取缓存的验证码
+//        String identifyingCodeCache = stringCache.get(MemberConstants.VERIFY_CODE_FOR_BY_PHONE);
+//        if (identifyingCodeCache.equals(verifyCode)) {
+//            return ResultUtils.setOk();
+//        }
         return ResultUtils.setError(ResultCode.PARAMS_ERROR);
     }
 }
