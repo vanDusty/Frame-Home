@@ -44,9 +44,9 @@
 	<bean id="setCache" class="com.van.dusty.redis.SetCache">
 		<property name="jedisPool" ref="jedisPool"/>
 	</bean>
-	<bean id="redisClient" class="com.van.dusty.redis.RedisClient">
-		<property name="jedisPool" ref="jedisPool"/>
-	</bean>
+	<!--<bean id="redisClient" class="com.van.dusty.redis.RedisClient">-->
+		<!--<property name="jedisPool" ref="jedisPool"/>-->
+	<!--</bean>-->
 	<bean id="redisLock" class="com.van.dusty.redis.RedisDistributedLock">
 		<property name="jedisPool" ref="jedisPool"/>
 	</bean>

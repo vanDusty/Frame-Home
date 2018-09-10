@@ -13,7 +13,6 @@ import com.van.dusty.redis.MemberConstants;
 import com.van.dusty.redis.StringCache;
 import com.van.dusty.service.UserService;
 import com.van.dusty.service.entity.SendSmsCodeVO;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,7 +30,7 @@ public class UserServiceServiceImpl implements UserService {
     @Resource
     StringCache stringCache;
 
-    private static final Logger logger = Logger.getLogger(UserServiceServiceImpl.class);
+//    private static final Logger logger = Logger.getLogger(UserServiceServiceImpl.class);
 
     @Resource
     private UserDAO userDAO;//这里会报错，但是并不会影响
@@ -133,7 +132,7 @@ public class UserServiceServiceImpl implements UserService {
     }
     // 校验项目名称
     public ApiResult userRegister(UserDO userDO) {
-        logger.info("checkSmsVerifyCode param ：" + JSON.toJSONString(userDO));
+//        logger.info("checkSmsVerifyCode param ：" + JSON.toJSONString(userDO));
 //        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(verifyCode)) {
 //            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
 //        }
