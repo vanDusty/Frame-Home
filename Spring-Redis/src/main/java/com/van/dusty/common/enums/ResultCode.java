@@ -21,6 +21,7 @@ public enum ResultCode {
 
 
     SEND_PHONE_EXCEPTION(100100,"手机号当天发送次数过多"),
+    VERIFY_CODE_FALSE(100100,"手机验证码错误！"),
     SEND_REPEAT_REQUEST(100109,"%s秒后方可重新发验证码！"),//
 
     ;

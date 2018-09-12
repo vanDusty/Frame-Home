@@ -1,6 +1,5 @@
 package com.van.dusty.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.van.dusty.common.enums.ResultCode;
 import com.van.dusty.common.result.ApiResult;
 import com.van.dusty.common.result.ResultUtils;
@@ -12,7 +11,10 @@ import com.van.dusty.model.UserDO;
 import com.van.dusty.redis.MemberConstants;
 import com.van.dusty.redis.StringCache;
 import com.van.dusty.service.UserService;
-import com.van.dusty.service.entity.SendSmsCodeVO;
+import com.van.dusty.service.entity.MobileRegisterParamVO;
+import com.van.dusty.service.entity.SmsCodeParamVO;
+import com.van.dusty.service.entity.UserVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,38 +31,32 @@ public class UserServiceServiceImpl implements UserService {
 
     @Resource
     StringCache stringCache;
-
-//    private static final Logger logger = Logger.getLogger(UserServiceServiceImpl.class);
-
     @Resource
     private UserDAO userDAO;//这里会报错，但是并不会影响
 
 
-    @Override
-    public ApiResult userLogin(UserDO userDO) {
-        UserDO user = userDAO.selectUserByUserName(userDO.getUserName());
+    public ApiResult userLogin(UserVO userVO) {
+        UserDO user = userDAO.selectUserByUserName(userVO.getUserName());
         if (null == user) {
             return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
         }
-        if (!user.getPassword().equals(userDO.getPassword())) {
+        if (!user.getPassword().equals(userVO.getPassword())) {
             return ResultUtils.setError(ResultCode.SYSTEM_ERROR);
         }
-        return ResultUtils.setOk(user);
+        BeanUtils.copyProperties(user,userVO);
+        return ResultUtils.setOk(userVO);
     }
-
-    public ApiResult sendSmsVerifyCode(SendSmsCodeVO sendSmsCodeVO) {
-        SendSmsCodeVO.SendSmsCodeParams param = sendSmsCodeVO.getParam();
-        ProjectNameEnum projectNameEnum = getValidProjectNameEnum(sendSmsCodeVO.getProjectName());
+    public ApiResult sendSmsVerifyCode(SmsCodeParamVO param) {
+        ProjectNameEnum projectNameEnum = getValidProjectNameEnum(param.getProjectName());
         SendSmsTypeEnum sendSmsTypeEnum = SendSmsTypeEnum.checkSendType(param.getType());
         // 参数校验
         if (projectNameEnum == null || sendSmsTypeEnum == null) {
             return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
         }
         param.setZoneNum(param.getZoneNum() == null ? 86 : param.getZoneNum());
-        if (StringUtils.isEmpty(sendSmsCodeVO.getParam().getPhone())) {
+        if (StringUtils.isEmpty(param.getPhone())) {
             return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
         }
-
         //根据类型判断用户是否还可以继续发送短信
         checkSendTypeDetail(sendSmsTypeEnum,param.getPhone(),param.getZoneNum());
         //判断发送验证码是否超过限定次数
@@ -81,7 +77,7 @@ public class UserServiceServiceImpl implements UserService {
         String identifyingCode = String.valueOf((int)((Math.random()*9+1)*100000));
         // 发送验证码：省略
         //假设发送成功，把验证码存入缓存
-        stringCache.put(MemberConstants.VERIFY_CODE_FOR_BY_PHONE ,identifyingCode,MemberConstants.FIFTEEN_MINUTES);
+        stringCache.put(MemberConstants.VERIFY_CODE_FOR_BY_PHONE + redisKey ,identifyingCode,MemberConstants.FIFTEEN_MINUTES);
         //存放当前时间，用于判断60秒内不可重复发送验证码
         stringCache.put(MemberConstants.VERIFY_CODE_FOR_FREQUENT_ONE_MINUTE + redisKey,String.valueOf(System.currentTimeMillis()),MemberConstants.ONE_MINUTES);
         int sendCounts = StringUtils.isNotBlank(sendCount)?Integer.parseInt(sendCount) + 1 : 1;
@@ -131,16 +127,49 @@ public class UserServiceServiceImpl implements UserService {
         return projectNameEnum;
     }
     // 校验项目名称
-    public ApiResult userRegister(UserDO userDO) {
-//        logger.info("checkSmsVerifyCode param ：" + JSON.toJSONString(userDO));
-//        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(verifyCode)) {
-//            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
-//        }
-//        //获取缓存的验证码
-//        String identifyingCodeCache = stringCache.get(MemberConstants.VERIFY_CODE_FOR_BY_PHONE);
-//        if (identifyingCodeCache.equals(verifyCode)) {
-//            return ResultUtils.setOk();
-//        }
-        return ResultUtils.setError(ResultCode.PARAMS_ERROR);
+    public ApiResult userRegister(MobileRegisterParamVO param) {
+        SmsCodeParamVO params = param.getParam();
+        ProjectNameEnum projectNameEnum = getValidProjectNameEnum(params.getProjectName());
+        //校验手机号
+        params.setZoneNum(params.getZoneNum() == null ? 86 : params.getZoneNum());
+        if (StringUtils.isEmpty(params.getPhone())) {
+            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
+        }
+        // 校验短信验证码
+        ApiResult result = checkSMSCode(params,projectNameEnum);
+        if (!result.isSuccess()) {
+            return result;
+        }
+        UserDO userDO = createUser(params);
+        if (userDO == null) {
+            return ResultUtils.setError(ResultCode.SYSTEM_ERROR);
+        }
+        return ResultUtils.setOk();
+    }
+
+    private UserDO createUser(SmsCodeParamVO param) {
+        UserDO userDO = new UserDO();
+        userDO.setNickName(param.getPhone());
+        userDO.setUserName(param.getPhone());
+        userDO.setPhone(param.getPhone());
+        userDO.setPassword("333");
+        userDAO.insert(userDO);
+        return userDO;
+    }
+
+    // 核对短信验证码
+    private ApiResult checkSMSCode(SmsCodeParamVO params, ProjectNameEnum projectNameEnum) {
+        SendSmsTypeEnum sendSmsTypeEnum = SendSmsTypeEnum.checkSendType(params.getType());
+        if(sendSmsTypeEnum == null){
+            return ResultUtils.setError(ResultCode.LACK_PARAM_ERROR);
+        }
+        //获取缓存的验证码
+        String rediskey = getVerifyCodeCacheKeySuffix(projectNameEnum.getProjectName(),params.getType(), params.getZoneNum(), params.getPhone());
+        String identifyingCodeCache = stringCache.get(MemberConstants.VERIFY_CODE_FOR_BY_PHONE + rediskey);
+        //判断缓存验证码是否存在
+        if(StringUtils.isBlank(identifyingCodeCache) || !identifyingCodeCache.equals(params.getVerifyCode())){
+            return ResultUtils.setError(ResultCode.VERIFY_CODE_FALSE);
+        }
+        return ResultUtils.setOk();
     }
 }

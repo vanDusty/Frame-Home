@@ -1,6 +1,16 @@
-package com.van.dusty.model;
+package com.van.dusty.service.entity;
 
-public class UserDO {
+import com.alibaba.fastjson.JSON;
+
+import java.io.Serializable;
+
+/**
+ * @program: Spring-Home
+ * @description:
+ * @author: Van
+ * @create: 2018-09-10 14:03
+ **/
+public class UserVO implements Serializable {
     private Long id;
 
     private String userName;
@@ -61,4 +71,8 @@ public class UserDO {
         this.password = password == null ? null : password.trim();
     }
 
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }

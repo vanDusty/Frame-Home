@@ -1,9 +1,10 @@
 package com.van.dusty.controller;
 
 import com.van.dusty.common.result.ApiResult;
-import com.van.dusty.model.UserDO;
 import com.van.dusty.service.UserService;
-import com.van.dusty.service.entity.SendSmsCodeVO;
+import com.van.dusty.service.entity.MobileRegisterParamVO;
+import com.van.dusty.service.entity.SmsCodeParamVO;
+import com.van.dusty.service.entity.UserVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,19 +25,6 @@ public class UserController {
     @Resource
     UserService userService;
 
-    @RequestMapping("/login")
-    public ModelAndView loginView() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/user/loginView");
-        return mv;
-    }
-    @RequestMapping(value = "/toLogin",method = RequestMethod.POST)
-    @ResponseBody
-    public ApiResult toLogin(UserDO userDO) {
-        ApiResult result = userService.userLogin(userDO);
-        return result;
-    }
-
     @RequestMapping("/register")
     public ModelAndView registerView() {
         ModelAndView mv = new ModelAndView();
@@ -53,27 +41,37 @@ public class UserController {
      */
     @RequestMapping(value = "/sendVerifyCode",method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult sendVerifyCode(String phone,String osType,String type) {
-        SendSmsCodeVO sendSmsCodeVO = new SendSmsCodeVO();
-        sendSmsCodeVO.setProjectName("dusty_blog");
-        sendSmsCodeVO.setOsType(osType);
-        SendSmsCodeVO.SendSmsCodeParams params = new SendSmsCodeVO().new SendSmsCodeParams();
-        params.setPhone(phone);
-        params.setType(type);
-        params.setZoneNum(86);
-        sendSmsCodeVO.setParam(params);
-        ApiResult result = userService.sendSmsVerifyCode(sendSmsCodeVO);
+    public ApiResult sendVerifyCode(String phone,String osType,String type,String projectName) {
+        SmsCodeParamVO smsCodeParamVO = new SmsCodeParamVO();
+        smsCodeParamVO.setOsType(osType);
+        smsCodeParamVO.setPhone(phone);
+        smsCodeParamVO.setType(type);
+        smsCodeParamVO.setZoneNum(86);
+        smsCodeParamVO.setProjectName(projectName);
+        ApiResult result = userService.sendSmsVerifyCode(smsCodeParamVO);
         return result;
     }
 
 
 
-    @RequestMapping(value = "/toRegister",method = RequestMethod.POST)
+    @RequestMapping(value = "/doRegister",method = RequestMethod.POST)
     @ResponseBody
-    public ApiResult toRegister(UserDO userDO) {
-        ApiResult result = userService.userLogin(userDO);
+    public ApiResult toRegister(MobileRegisterParamVO mobileRegisterParamVO) {
+        ApiResult result = userService.userRegister(mobileRegisterParamVO);
         return result;
     }
 
 
+    @RequestMapping("/login")
+    public ModelAndView loginView() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/user/loginView");
+        return mv;
+    }
+    @RequestMapping(value = "/toLogin",method = RequestMethod.POST)
+    @ResponseBody
+    public ApiResult toLogin(UserVO userVO) {
+        ApiResult result = userService.userLogin(userVO);
+        return result;
+    }
 }

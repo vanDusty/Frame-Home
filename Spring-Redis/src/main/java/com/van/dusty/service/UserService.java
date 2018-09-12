@@ -1,15 +1,18 @@
 package com.van.dusty.service;
 
 import com.van.dusty.common.result.ApiResult;
-import com.van.dusty.model.UserDO;
-import com.van.dusty.service.entity.SendSmsCodeVO;
+import com.van.dusty.service.entity.MobileRegisterParamVO;
+import com.van.dusty.service.entity.SmsCodeParamVO;
+import com.van.dusty.service.entity.UserVO;
 
 public interface UserService {
 
-    ApiResult sendSmsVerifyCode(SendSmsCodeVO sendSmsCodeVO);
+    public ApiResult sendSmsVerifyCode(SmsCodeParamVO smsCodeParamVO);
 
-    ApiResult userRegister(UserDO userDO);
+    public ApiResult userRegister(MobileRegisterParamVO param);
 
-    ApiResult userLogin(UserDO userDO);
+    public ApiResult userLogin(UserVO userVO);
+
+
 
 }
