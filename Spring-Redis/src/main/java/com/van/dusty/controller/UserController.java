@@ -5,6 +5,7 @@ import com.van.dusty.service.UserService;
 import com.van.dusty.service.entity.MobileRegisterParamVO;
 import com.van.dusty.service.entity.SmsCodeParamVO;
 import com.van.dusty.service.entity.UserVO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

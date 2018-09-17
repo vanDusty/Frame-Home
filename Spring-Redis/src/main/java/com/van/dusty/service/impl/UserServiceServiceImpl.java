@@ -126,7 +126,7 @@ public class UserServiceServiceImpl implements UserService {
         }
         return projectNameEnum;
     }
-    // 校验项目名称
+    // 用户注册
     public ApiResult userRegister(MobileRegisterParamVO param) {
         SmsCodeParamVO params = param.getParam();
         ProjectNameEnum projectNameEnum = getValidProjectNameEnum(params.getProjectName());
