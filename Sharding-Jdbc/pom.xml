@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>sharding Maven Webapp</name>
+  <name>sharding</name>
   <!-- FIXME change it to the project's website -->
   <url>http://maven.apache.org</url>
 
