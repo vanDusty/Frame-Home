@@ -14,9 +14,9 @@
     <sharding:standard-strategy id="tableShardingStrategy" sharding-column="user_id" precise-algorithm-class="com.van.dusty.common.sharding.MemberSingleKeyTableShardingAlgorithm"/>
 
     <sharding:data-source id="shardingDataSource">
-        <sharding:sharding-rule data-source-names="ds_member_info" default-data-source-name="ds_member_info">
+        <sharding:sharding-rule data-source-names="data_druid" default-data-source-name="data_druid">
             <sharding:table-rules>
-            	<sharding:table-rule logic-table="user_info" actual-data-nodes="ds_member_info.user_info_${0..9}"  table-strategy-ref="tableShardingStrategy"/>
+            	<sharding:table-rule logic-table="user_info" actual-data-nodes="data_druid.user_info_${0..9}"  table-strategy-ref="tableShardingStrategy"/>
             </sharding:table-rules>
         </sharding:sharding-rule>
     </sharding:data-source>

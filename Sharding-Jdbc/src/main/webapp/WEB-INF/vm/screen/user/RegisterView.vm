@@ -56,7 +56,7 @@
         $("#registerForm").ajaxForm(function(data){
             if(data.code=="200"){
                 alert("注册成功！");
-                window.location.replace("https://www.dustyblog.cn") ;
+                window.location.replace("./login") ;
             }else {
                 alert("注册失败 :" + data.error );
             }

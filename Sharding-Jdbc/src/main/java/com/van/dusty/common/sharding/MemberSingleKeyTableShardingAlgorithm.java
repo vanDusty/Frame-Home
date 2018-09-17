@@ -8,7 +8,7 @@ import java.util.Collection;
 
 /**
  * 分表逻辑
- * @author sx
+ * @author van
  *
  */
 public class MemberSingleKeyTableShardingAlgorithm implements PreciseShardingAlgorithm<Long> {
