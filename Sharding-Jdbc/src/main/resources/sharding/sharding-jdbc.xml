@@ -11,7 +11,7 @@
                         http://shardingjdbc.io/schema/shardingjdbc/sharding/sharding.xsd
                         ">
 
-    <sharding:standard-strategy id="tableShardingStrategy" sharding-column="user_id" precise-algorithm-class="com.van.dusty.common.sharding.MemberSingleKeyTableShardingAlgorithm"/>
+    <sharding:standard-strategy id="tableShardingStrategy" sharding-column="user_id" precise-algorithm-class="com.van.com.van.dusty.common.sharding.MemberSingleKeyTableShardingAlgorithm"/>
 
     <sharding:data-source id="shardingDataSource">
         <sharding:sharding-rule data-source-names="data_druid" default-data-source-name="data_druid">

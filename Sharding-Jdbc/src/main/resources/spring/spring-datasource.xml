@@ -15,7 +15,7 @@
     <!--扫描配置文件-->
     <context:property-placeholder location="classpath:/service.properties" ignore-unresolvable="true" />
     <!-- 扫描service包下所有使用注解的类型 -->
-    <context:component-scan base-package="com.van.dusty.service.impl"/>
+    <context:component-scan base-package="com.van.com.van.dusty.service.impl"/>
     <!--配置druid连接池-->
     <bean id="data_druid" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
@@ -64,7 +64,7 @@
     <!-- 配置扫描Dao接口包，动态实现Dao接口，注入到spring容器中 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 给出需要扫描Dao接口包 -->
-        <property name="basePackage" value="com.van.dusty.dao"/>
+        <property name="basePackage" value="com.van.com.van.dusty.dao"/>
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>

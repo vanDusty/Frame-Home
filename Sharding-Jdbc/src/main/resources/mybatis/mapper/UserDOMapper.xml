@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.van.dusty.dao.UserDAO" >
-  <resultMap id="BaseResultMap" type="com.van.dusty.model.UserDO" >
+<mapper namespace="com.van.com.van.dusty.dao.UserDAO" >
+  <resultMap id="BaseResultMap" type="com.van.com.van.dusty.model.UserDO" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     delete from user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.van.dusty.model.UserDO" >
+  <insert id="insert" parameterType="com.van.com.van.dusty.model.UserDO" >
     insert into user (id, user_name, nick_name, 
       phone, e_mail, password
       )
@@ -30,7 +30,7 @@
       #{phone,jdbcType=VARCHAR}, #{eMail,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.van.dusty.model.UserDO" >
+  <insert id="insertSelective" parameterType="com.van.com.van.dusty.model.UserDO" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.van.dusty.model.UserDO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.van.com.van.dusty.model.UserDO" >
     update user
     <set >
       <if test="userName != null" >
@@ -94,7 +94,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.van.dusty.model.UserDO" >
+  <update id="updateByPrimaryKey" parameterType="com.van.com.van.dusty.model.UserDO" >
     update user
     set user_name = #{userName,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},

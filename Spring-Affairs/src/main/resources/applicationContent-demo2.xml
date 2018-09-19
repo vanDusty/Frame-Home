@@ -52,11 +52,11 @@
 
 
     <!-- 配置Service的类 -->
-    <bean id="transferService" class="com.van.dusty.service.demo2.TransferServiceImpl_demo2">
+    <bean id="transferService" class="com.van.com.van.dusty.service.demo2.TransferServiceImpl_demo2">
     </bean>
 
     <!-- 配置Dao的类 -->
-    <bean id="transferDao" class="com.van.dusty.dao.TransferDaoImpl">
+    <bean id="transferDao" class="com.van.com.van.dusty.dao.TransferDaoImpl">
         <!-- 为了使Dao层操作数据库，继承了spring-jdbc的模版类，需要在Dao中注入连接池-->
         <property name="dataSource" ref="dataSource"></property>
     </bean>

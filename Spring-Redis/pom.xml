@@ -4,7 +4,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.van.dusty</groupId>
+    <groupId>com.van.com.van.dusty</groupId>
     <artifactId>redis</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -64,12 +64,11 @@
             <version>5.1.41</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- 数据库连接池 -->
+        <!-- 数据库连接池:druid -->
         <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.5.2</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.27</version>
         </dependency>
 
         <!-- === mybatis start === -->
@@ -84,12 +83,7 @@
             <version>1.2.3</version>
         </dependency>
         <!-- === mybatis end === -->
-        <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.0.27</version>
-        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -167,11 +161,14 @@
             <version>2.7.0</version>
         </dependency>
         <!-- jackson end -->
+
+        <!-- redis -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
+
 
     </dependencies>
 

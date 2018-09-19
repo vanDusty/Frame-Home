@@ -1,4 +1,4 @@
-package com.van.dusty.velocity;
+package com.van.dusty.common.velocity;
 
 import org.apache.velocity.context.Context;
 import org.apache.velocity.tools.Scope;

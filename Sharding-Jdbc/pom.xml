@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.van.dusty</groupId>
+  <groupId>com.van.com.van.dusty</groupId>
   <artifactId>sharding</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -69,14 +69,12 @@
       <version>5.1.41</version>
       <scope>runtime</scope>
     </dependency>
-
-    <!-- 数据库连接池 -->
+    <!-- 数据库连接池:druid -->
     <dependency>
-      <groupId>com.mchange</groupId>
-      <artifactId>c3p0</artifactId>
-      <version>0.9.5.2</version>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.27</version>
     </dependency>
-
     <!-- === mybatis start === -->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -89,12 +87,7 @@
       <version>1.2.3</version>
     </dependency>
     <!-- === mybatis end === -->
-    <!-- druid -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid</artifactId>
-      <version>1.0.27</version>
-    </dependency>
+
     <!-- Spring -->
     <dependency>
       <groupId>org.springframework</groupId>

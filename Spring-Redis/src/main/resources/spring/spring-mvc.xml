@@ -62,7 +62,7 @@
         <property name="numberToolAttribute" value="numberTool"/><!--数字函数名称 -->
 
         <property name="toolboxConfigLocation" value="/WEB-INF/classes/velocity-tools.xml"/> <!--velocity 工具-->
-        <property name="viewClass" value="com.van.dusty.velocity.VelocityToolbox20View"/>
+        <property name="viewClass" value="com.van.dusty.common.velocity.VelocityToolbox20View"/>
     </bean>
     <!-- 用于返回json格式 -->
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">

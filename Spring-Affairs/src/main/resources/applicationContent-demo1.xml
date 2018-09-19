@@ -50,11 +50,11 @@
     </bean>
 
     <!-- 配置Service的类 -->
-    <bean id="transferService" class="com.van.dusty.service.demo1.TransferServiceImpl_demo1">
+    <bean id="transferService" class="com.van.com.van.dusty.service.demo1.TransferServiceImpl_demo1">
     </bean>
 
     <!-- 配置Dao的类 -->
-    <bean id="transferDao" class="com.van.dusty.dao.TransferDaoImpl">
+    <bean id="transferDao" class="com.van.com.van.dusty.dao.TransferDaoImpl">
         <!-- 为了使Dao层操作数据库，继承了spring-jdbc的模版类，需要在Dao中注入连接池-->
         <property name="dataSource" ref="dataSource"></property>
     </bean>
@@ -89,7 +89,7 @@
     <!-- 配置切面 -->
     <aop:config>
         <!-- 配置切入点 -->
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.van.dusty.service.demo1.*.*(..))" />
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.van.com.van.dusty.service.demo1.*.*(..))" />
         <!-- execution（）表达式中*表示任意的返回值   后面表示路径，最后有`+`表示它的子类，`.*`表示任意的方法，`(..)`表示任意的参数，-->
         <!-- 配置切面(包含advisor和aspect两种) -->
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />

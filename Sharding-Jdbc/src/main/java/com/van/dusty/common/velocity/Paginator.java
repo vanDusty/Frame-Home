@@ -1,4 +1,4 @@
-package com.van.dusty.velocity;
+package com.van.dusty.common.velocity;
 
 /**
  * @program: Spring-Home
