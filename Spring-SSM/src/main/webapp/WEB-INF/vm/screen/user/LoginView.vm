@@ -19,7 +19,7 @@
                 <h1 class="logo-name" style="margin-left: -12%;">Dusty</h1>
             </div>
             <h3>即将进入 <b>风尘博客</b></h3>
-            <form id="loginForm" class="m-t" method="post"  action="/user/toLogin" onsubmit="return false">
+            <form id="loginForm" class="m-t" method="post"  action="/user/toLogin" onsubmit="return login()">
                 <div class="form-group">
                     <input id="userName" type="text" name="userName" class="form-control input-lg" placeholder="用户名" required=""/>
                 </div>
