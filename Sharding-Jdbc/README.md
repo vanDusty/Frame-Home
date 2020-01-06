@@ -1,2 +1,0 @@
-# Sharding-jdbc分表
-
