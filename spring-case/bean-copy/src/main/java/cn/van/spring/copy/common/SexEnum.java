@@ -1,4 +1,4 @@
-package cn.van.spring.use.bean.copy.common;
+package cn.van.spring.copy.common;
 
 /**
  * Copyright (C), 2015-2020, 风尘博客

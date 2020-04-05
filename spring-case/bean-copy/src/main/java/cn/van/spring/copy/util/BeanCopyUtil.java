@@ -1,4 +1,4 @@
-package cn.van.spring.use.bean.copy.util;
+package cn.van.spring.copy.util;
 
 import org.springframework.beans.BeanUtils;
 

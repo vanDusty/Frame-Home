@@ -1,9 +1,9 @@
-package cn.van.spring.use.bean.copy;
+package cn.van.spring.copy;
 
-import cn.van.spring.use.bean.copy.common.SexEnum;
-import cn.van.spring.use.bean.copy.entity.UserDO;
-import cn.van.spring.use.bean.copy.model.UserVO;
-import cn.van.spring.use.bean.copy.util.BeanCopyUtil;
+import cn.van.spring.copy.common.SexEnum;
+import cn.van.spring.copy.entity.UserDO;
+import cn.van.spring.copy.model.UserVO;
+import cn.van.spring.copy.util.BeanCopyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

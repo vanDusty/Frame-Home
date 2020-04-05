@@ -1,4 +1,4 @@
-package cn.van.spring.use.bean.copy;
+package cn.van.spring.copy;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

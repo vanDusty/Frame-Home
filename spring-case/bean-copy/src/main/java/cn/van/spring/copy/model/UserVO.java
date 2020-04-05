@@ -1,4 +1,4 @@
-package cn.van.spring.use.bean.copy.model;
+package cn.van.spring.copy.model;
 
 import lombok.Data;
 

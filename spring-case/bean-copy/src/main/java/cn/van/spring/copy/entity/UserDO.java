@@ -1,4 +1,4 @@
-package cn.van.spring.use.bean.copy.entity;
+package cn.van.spring.copy.entity;
 
 import lombok.Data;
 
