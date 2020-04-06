@@ -1,4 +1,4 @@
-package cn.van.spring.copy;
+package cn.van.spring.copy.beanutils;
 
 import cn.van.spring.copy.beanutils.common.SexEnum;
 import cn.van.spring.copy.beanutils.entity.UserDO;
