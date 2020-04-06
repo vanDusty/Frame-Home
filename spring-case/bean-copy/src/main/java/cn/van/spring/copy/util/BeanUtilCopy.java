@@ -9,14 +9,14 @@ import java.util.function.Supplier;
 /**
  * Copyright (C), 2015-2020, 风尘博客
  * 公众号 : 风尘博客
- * FileName: BeanCopyUtil
+ * FileName: BeanUtilCopy
  *
  * @author: Van
  * Date:     2020-01-01 11:26
- * Description: 数据拷贝工具类
+ * Description: Spring BeanUtils 工具类
  * Version： V1.0
  */
-public class BeanCopyUtil extends BeanUtils {
+public class BeanUtilCopy extends BeanUtils {
 
     /**
      * 集合数据的拷贝
@@ -36,7 +36,7 @@ public class BeanCopyUtil extends BeanUtils {
      * @param callBack: 回调函数
      * @return
      */
-    public static <S, T> List<T> copyListProperties(List<S> sources, Supplier<T> target, BeanCopyUtilCallBack<S, T> callBack) {
+    public static <S, T> List<T> copyListProperties(List<S> sources, Supplier<T> target, BeanUtilCopyCallBack<S, T> callBack) {
         List<T> list = new ArrayList<>(sources.size());
         for (S source : sources) {
             T t = target.get();

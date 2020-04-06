@@ -11,7 +11,7 @@ package cn.van.spring.copy.util;
  * Version： V1.0
  */
 @FunctionalInterface
-public interface BeanCopyUtilCallBack <S, T> {
+public interface BeanUtilCopyCallBack<S, T> {
 
     /**
      * 定义默认回调方法

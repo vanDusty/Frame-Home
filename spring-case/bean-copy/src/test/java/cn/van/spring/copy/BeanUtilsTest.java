@@ -3,7 +3,7 @@ package cn.van.spring.copy;
 import cn.van.spring.copy.common.SexEnum;
 import cn.van.spring.copy.entity.UserDO;
 import cn.van.spring.copy.model.UserVO;
-import cn.van.spring.copy.util.BeanCopyUtil;
+import cn.van.spring.copy.util.BeanUtilCopy;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,19 +78,19 @@ public class BeanUtilsTest {
         List<UserDO> userDOList = new ArrayList();
         userDOList.add(new UserDO(1L, "Van", 18, 1));
         userDOList.add(new UserDO(2L, "VanVan", 20, 2));
-        List<UserVO> userVOList = BeanCopyUtil.copyListProperties(userDOList, UserVO::new);
+        List<UserVO> userVOList = BeanUtilCopy.copyListProperties(userDOList, UserVO::new);
         log.info("userVOList:{}",userVOList);
     }
 
     /**
-     * 带回调的拷贝
+     * 带特定转换的集合拷贝
      */
     @Test
     public void listCopyUpWithCallback() {
         List<UserDO> userDOList = new ArrayList();
         userDOList.add(new UserDO(1L, "Van", 18, 1));
         userDOList.add(new UserDO(2L, "VanVan", 20, 2));
-        List<UserVO> userVOList = BeanCopyUtil.copyListProperties(userDOList, UserVO::new, (userDO, userVO) -> {
+        List<UserVO> userVOList = BeanUtilCopy.copyListProperties(userDOList, UserVO::new, (userDO, userVO) -> {
             // 这里可以定义特定的转换规则
             userVO.setSex(SexEnum.getDescByCode(userDO.getSex()).getDesc());
         });
