@@ -1,4 +1,4 @@
-package cn.van.spring.copy.util;
+package cn.van.spring.copy.beanutils.util;
 
 /**
  * Copyright (C), 2015-2020, 风尘博客

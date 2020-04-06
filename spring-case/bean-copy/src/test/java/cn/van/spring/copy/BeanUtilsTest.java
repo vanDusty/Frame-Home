@@ -1,9 +1,9 @@
 package cn.van.spring.copy;
 
-import cn.van.spring.copy.common.SexEnum;
-import cn.van.spring.copy.entity.UserDO;
-import cn.van.spring.copy.model.UserVO;
-import cn.van.spring.copy.util.BeanUtilCopy;
+import cn.van.spring.copy.beanutils.common.SexEnum;
+import cn.van.spring.copy.beanutils.entity.UserDO;
+import cn.van.spring.copy.beanutils.model.UserVO;
+import cn.van.spring.copy.beanutils.util.BeanUtilCopy;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +20,8 @@ import java.util.List;
  * FileName: BeanUtilsTest
  *
  * @author: Van
- * Date:     2020-01-08 11:13
- * Description: ${DESCRIPTION}
+ * Date:     2020-01-01 21:13
+ * Description: Spring BeanUtils 测试
  * Version： V1.0
  */
 @SpringBootTest

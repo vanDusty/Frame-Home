@@ -1,4 +1,4 @@
-package cn.van.spring.copy.entity;
+package cn.van.spring.copy.beanutils.entity;
 
 import lombok.Data;
 
