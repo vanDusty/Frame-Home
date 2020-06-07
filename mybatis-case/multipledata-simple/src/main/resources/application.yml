@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    druid:
+      master: # 主数据源
+        username: master
+        password: password
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://47.98.178.84:3306/master
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+      slave: # 第二个数据源
+        username: slave
+        password: password
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://47.98.178.84:3306/slave
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20

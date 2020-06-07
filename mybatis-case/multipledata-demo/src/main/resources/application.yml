@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 主数据源
+    master:
+      url: jdbc:mysql://47.98.178.84:3306/master
+      username: master
+      password: password
+    # 其他数据源（可多个）
+    slave:
+      url: jdbc:mysql://47.98.178.84:3306/slave
+      username: slave
+      password: password
+# mybatis sql 日志
+logging:
+  level:
+    cn:
+      van:
+        annotation:
+          multipleDataSource:
+            mapper: debug

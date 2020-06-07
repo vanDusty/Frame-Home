@@ -1,20 +1,5 @@
-<h1 align="center"><a href="#" target="_blank">Spring-Home</a></h1>
+<h1 align="center"><a href="#" target="_blank">框架使用案例</a></h1>
 
-> 这里是Van使用 `Spring`的笔记，最近重新整理了下，后续会持续更新...
-
-<p align="center">
-<img src="https://img.shields.io/badge/language-java-gree.svg" />
-	<img src = "https://img.shields.io/badge/JDK-1.8-yellow.svg?style=flat-square"/>
-	<img src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-	<img src="https://img.shields.io/badge/spring%20boot-2.1.7.RELEASE-brightgreen" style="max-width:100%;">
-	<img src="https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square" style="max-width:100%;">
-</p>
-
-
-## [Spring 系列目录](https://www.dusty.vip)
-
-1. Spring 计时器 StopWatch
-1. 从 Spring 应用获取Bean
 
 > 整理不易，如果觉得写的还不错，点个✨，谢谢大佬！
 

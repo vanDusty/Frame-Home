@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.178.84:3306/van_mybatis
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: van_mybatis
+    password: W2hY8X6jbdPFatTm
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.van.mybatis.pageable.entity
+logging:
+  level:
+    cn:
+      van:
+        mybatis:
+          pageable:
+            mapper: debug
