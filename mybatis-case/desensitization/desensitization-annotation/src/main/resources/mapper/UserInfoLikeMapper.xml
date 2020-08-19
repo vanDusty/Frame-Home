@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.van.desensitization.demo.mapper.UserInfoLikeMapper">
+  <resultMap id="BaseResultMap" type="cn.van.desensitization.demo.entity.UserInfoLikeDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, pass_word, nick_name, mobile, email, gmt_create, gmt_update
+  </sql>
+
+  <select id="selectByKeyWord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info_like
+    <where>
+      <if test="nickName != '' and nickName != null">
+        and nick_name like #{nickName}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByWord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info_like
+    <where>
+      <if test="nickName != '' and nickName != null">
+        and nick_name like '%${nickName}%'
+      </if>
+    </where>
+  </select>
+
+  <select id="selectForConcat" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info_like
+    <where>
+      <if test="nickName != '' and nickName != null">
+        and nick_name like CONCAT('%',#{nickName},'%')
+      </if>
+    </where>
+  </select>
+
+  <select id="selectForBind" resultMap="BaseResultMap">
+    <bind name="keyWord" value="'%' + nickName + '%'" />
+    select
+    <include refid="Base_Column_List" />
+    from user_info_like
+    <where>
+      <if test="nickName != '' and nickName != null">
+        and nick_name like #{keyWord}
+      </if>
+    </where>
+  </select>
+
+</mapper>

@@ -1,0 +1,23 @@
+#端口
+server:
+  port: 8081
+
+# 数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://47.98.178.84:3306/van_mybatis
+    username: username
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.van.mybatis.demo.entity
+# sql log
+logging:
+  level:
+    cn:
+      van:
+        mybatis:
+          demo:
+            mapper: debug
