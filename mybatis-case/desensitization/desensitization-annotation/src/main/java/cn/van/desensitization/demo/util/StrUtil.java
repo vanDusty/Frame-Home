@@ -25,8 +25,6 @@ public class StrUtil {
     /**
      * 替换字符串
      * @param str
-     * @param size
-     * @param padStr
      * @return
      */
     public static String rightPad(String str) {
