@@ -8,6 +8,7 @@
     <artifactId>desensitization-annotation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <description>Spring 格式化之 Formatter</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -24,6 +25,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!--mysql-->
         <dependency>

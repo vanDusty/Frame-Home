@@ -1,5 +1,7 @@
-package cn.van.desensitization.demo.annotion;
+package cn.van.desensitization.demo.desensitization;
 
+import cn.van.desensitization.demo.desensitization.Desensitized;
+import cn.van.desensitization.demo.desensitization.DesensitizedFormatter;
 import org.springframework.format.AnnotationFormatterFactory;
 import org.springframework.format.Parser;
 import org.springframework.format.Printer;
@@ -8,15 +10,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Deprecated为注解的名称
+ * Copyright (C), 2015-2020, 风尘博客
+ * 公众号 : 风尘博客
+ * FileName: DesensitizedAnnotationFormatterFactory
  *
- * @author 韩惠德
+ * @author: Van
+ * Date:     2020-08-02 20:55
+ * Description: 实现AnnotationFormatterFactory接口，将带注解的数据脱敏
+ * Version： V1.0
  */
 public class DesensitizedAnnotationFormatterFactory implements AnnotationFormatterFactory<Desensitized> {
+
     /**
-     * 返回为处理的变量的类型
-     *
-     * @return
+     * @return 处理的变量的类型
      */
     @Override
     public Set<Class<?>> getFieldTypes() {
@@ -35,10 +41,9 @@ public class DesensitizedAnnotationFormatterFactory implements AnnotationFormatt
         return getFormatter(desensitized);
     }
 
-
     private DesensitizedFormatter getFormatter(Desensitized desensitized) {
         DesensitizedFormatter formatter = new DesensitizedFormatter();
-        formatter.setTypeEnum(desensitized.type());
+        formatter.setSensitiveTypeEnum(desensitized.type());
         return formatter;
     }
 

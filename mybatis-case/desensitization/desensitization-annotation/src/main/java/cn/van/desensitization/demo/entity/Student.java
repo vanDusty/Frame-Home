@@ -1,8 +1,8 @@
 package cn.van.desensitization.demo.entity;
 
-import cn.van.desensitization.demo.annotion.Desensitized;
+import cn.van.desensitization.demo.desensitization.Desensitized;
+import cn.van.desensitization.demo.desensitization.SensitiveTypeEnum;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.util.Date;

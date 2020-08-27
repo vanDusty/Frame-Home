@@ -12,6 +12,11 @@ public class DesensitizedUtilsTest {
         log.info("chineseName:[{}]", DesensitizedUtil.desensitizedFrontField("风尘博客",2));
         log.info("chineseName:[{}]", DesensitizedUtil.desensitizedFrontField("张凡",1));
     }
+    @Test
+    public void d() {
+        System.out.println("01".substring(1,2));
+
+    }
 
     @Test
     public void desensitizedBehindField() {
