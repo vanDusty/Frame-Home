@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.van.mybatis.batch.mapper.UserInfoBatchMapper">
+
+  <insert id="insert" parameterType="cn.van.mybatis.batch.entity.UserInfoBatchDO">
+    insert into user_info_batch (user_name, pass_word, nick_name, mobile, email, gmt_create, gmt_update)
+    values (#{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR},#{nickName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtUpdate,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="batchInsert">
+    insert into user_info_batch (user_name, pass_word, nick_name, mobile, email, gmt_create, gmt_update)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userName,jdbcType=VARCHAR}, #{item.passWord,jdbcType=VARCHAR}, #{item.nickName,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtUpdate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+
+</mapper>
