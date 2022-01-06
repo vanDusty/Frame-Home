@@ -2,15 +2,13 @@ package cn.van.mybatis.demo.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class UserInfoDO implements Serializable {
     private Long id;
 
     private String userName;
 
-    private String passWord;
+    private Encrypt passWord;
 
     private String nickName;
 
@@ -40,11 +38,11 @@ public class UserInfoDO implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassWord() {
+    public Encrypt getPassWord() {
         return passWord;
     }
 
-    public void setPassWord(String passWord) {
+    public void setPassWord(Encrypt passWord) {
         this.passWord = passWord;
     }
 
