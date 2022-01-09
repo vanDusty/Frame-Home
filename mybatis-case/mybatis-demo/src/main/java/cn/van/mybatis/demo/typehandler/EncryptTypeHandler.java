@@ -1,6 +1,6 @@
 package cn.van.mybatis.demo.typehandler;
 
-import cn.van.mybatis.demo.encrypt.AesUtil;
+import cn.van.mybatis.demo.util.AesUtil;
 import cn.van.mybatis.demo.entity.Encrypt;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

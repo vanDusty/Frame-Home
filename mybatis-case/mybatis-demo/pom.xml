@@ -37,11 +37,6 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.groupbyinc</groupId>
-            <artifactId>common-http</artifactId>
-            <version>58</version>
-        </dependency>
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>

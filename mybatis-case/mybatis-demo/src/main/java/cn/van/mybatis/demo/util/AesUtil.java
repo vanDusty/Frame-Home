@@ -1,9 +1,10 @@
-package cn.van.mybatis.demo.encrypt;
+package cn.van.mybatis.demo.util;
 
-import com.groupbyinc.common.apache.commons.codec.binary.Base64;
+import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
 
 /**
  * Copyright (C), 2015-2022, 风尘博客
@@ -42,7 +43,7 @@ public class AesUtil {
             return null;
         }
         //此处使用BASE64做转码功能，同时能起到2次加密的作用。
-        return new Base64().encodeToString(encrypted);
+        return Base64.getEncoder().encodeToString(encrypted);
     }
 
     /**
@@ -66,7 +67,7 @@ public class AesUtil {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, skeySpec);
             //先用base64解密
-            byte[] encrypted1 = new Base64().decode(sSrc);
+            byte[] encrypted1 = Base64.getDecoder().decode(sSrc);
             try {
                 byte[] original = cipher.doFinal(encrypted1);
                 String originalString = new String(original,"utf-8");
