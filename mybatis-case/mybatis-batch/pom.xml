@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>1.8.4</scope>
+            <scope>1.8.20</scope>
         </dependency>
     </dependencies>
 </project>

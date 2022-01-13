@@ -28,7 +28,6 @@
         <!-- 统一管理-商城版本 -->
         <mysql.version>8.0.17</mysql.version>
         <mybatis.version>2.2.0</mybatis.version>
-        <lombok.version>1.8.4</lombok.version>
         <pagehelper.version>1.4.0</pagehelper.version>
     </properties>
 
@@ -62,12 +61,6 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.version}</version>
-        </dependency>
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>${lombok.version}</scope>
         </dependency>
     </dependencies>
 
