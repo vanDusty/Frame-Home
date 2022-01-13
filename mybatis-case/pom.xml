@@ -11,6 +11,8 @@
 
     <modules>
         <module>mybatis-pagination</module>
+        <module>mybatis-demo</module>
+        <module>mybatis-batch</module>
     </modules>
 
     <packaging>pom</packaging>
