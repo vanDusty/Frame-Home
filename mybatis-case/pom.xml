@@ -28,7 +28,7 @@
     <properties>
         <java.version>1.8</java.version>
         <!-- 统一管理-商城版本 -->
-        <mysql.version>8.0.17</mysql.version>
+        <mysql.version>8.0.26</mysql.version>
         <mybatis.version>2.2.0</mybatis.version>
         <pagehelper.version>1.4.0</pagehelper.version>
     </properties>
