@@ -25,9 +25,10 @@
     <properties>
         <java.version>1.8</java.version>
         <mysql.version>8.0.26</mysql.version>
-        <mybatis.plus.version>3.4.3.4</mybatis.plus.version>
+        <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <pagehelper.boot.version>1.4.0</pagehelper.boot.version>
         <mybatis.plus.generator.version>3.5.1</mybatis.plus.generator.version>
+        <freemarker.version>2.3.31</freemarker.version>
 
 
     </properties>
@@ -76,18 +77,16 @@
             <version>${freemarker.version}</version>
         </dependency>
         <!-- mybatis-plus end -->
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>1.8.20</scope>
+        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
     <repositories>
+        <!--阿里云仓库-->
         <repository>
             <id>public</id>
             <name>aliyun nexus</name>
