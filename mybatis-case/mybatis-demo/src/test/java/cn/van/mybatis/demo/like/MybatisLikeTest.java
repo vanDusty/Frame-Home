@@ -1,7 +1,6 @@
 package cn.van.mybatis.demo.like;
 
 import cn.van.mybatis.demo.BaseTest;
-import cn.van.mybatis.demo.entity.UserInfoDO;
 import cn.van.mybatis.demo.entity.UserInfoLikeDO;
 import cn.van.mybatis.demo.mapper.UserInfoLikeMapper;
 import lombok.extern.slf4j.Slf4j;

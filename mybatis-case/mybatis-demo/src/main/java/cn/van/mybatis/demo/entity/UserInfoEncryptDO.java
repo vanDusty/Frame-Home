@@ -3,7 +3,7 @@ package cn.van.mybatis.demo.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class UserInfoDO implements Serializable {
+public class UserInfoEncryptDO implements Serializable {
     private Long id;
 
     private String userName;
@@ -88,7 +88,7 @@ public class UserInfoDO implements Serializable {
 
     @Override
     public String toString() {
-        return "UserInfoDO{" +
+        return "UserInfoEncryptDO{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +

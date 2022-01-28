@@ -1,14 +1,9 @@
-#端口
-server:
-  port: 8081
-
 # 数据库配置
 spring:
   datasource:
-    url: jdbc:mysql://47.98.178.84:3306/van_mybatis
-    username: username
+    url: jdbc:mysql://47.111.118.152:3306/mybatis
+    username: mybatis
     password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
 # mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml
