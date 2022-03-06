@@ -38,9 +38,9 @@ spring:
       # 连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作
       keepAlive: true
       # Spring 监控，利用aop 对指定接口的执行时间，jdbc数进行记录
-      aop-patterns: "cn.van.mybatis.druid.aspect.*"
+      aop-patterns: "cn.van.mybatis.druid.aop.*"
       ########### 启用内置过滤器（第一个 stat必须，否则监控不到SQL）##########
-      filters: stat,wall,log4j2
+      filters: stat,wall,log4j2,config
       # 自己配置监控统计拦截的filter
       filter:
         # 开启druid datasource的状态监控
@@ -87,10 +87,3 @@ logging:
         mybatis:
           druid:
             mapper: debug
-
-# druid 相关配置放这里
-druid:
-  # 管理用户账号
-  login:
-    username: admin
-    password: 123456

@@ -13,6 +13,7 @@
         <module>mybatis-pagination</module>
         <module>mybatis-demo</module>
         <module>mybatis-batch</module>
+        <module>mybatis-druid</module>
     </modules>
 
     <packaging>pom</packaging>
