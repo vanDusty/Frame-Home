@@ -24,7 +24,7 @@
     <!-- 统一管理版本 -->
     <properties>
         <java.version>1.8</java.version>
-        <mysql.version>8.0.26</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>
         <pagehelper.boot.version>1.4.0</pagehelper.boot.version>
         <mybatis.plus.generator.version>3.5.1</mybatis.plus.generator.version>
